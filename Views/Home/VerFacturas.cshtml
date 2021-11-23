@@ -1,0 +1,46 @@
+﻿@model TrenCR.Models.Factura
+@{
+    ViewData["Title"] = "Ver Facturas";
+}
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <h2 class="text-center">Facturas Realizadas</h2>
+        <table class="table table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre Persona</th>
+                    <th>Hora</th>
+                    <th>Ruta</th>
+                    <th>Estación</th>
+                    <th>Cantidad de Boletos</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach (Factura item in ViewBag.Facturas)
+                {
+                    <tr>
+                        <td>
+                            @item.IdFactura
+                        </td>
+                        <td>
+                            @item.NombrePersona
+                        </td>
+                        <td>
+                            @item.Hora
+                        </td>
+                        <td>
+                            @item.Ruta
+                        </td>
+                        <td>
+                            @item.Estacion
+                        </td>
+                        <td>
+                            @item.CantidadDeBoletos
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model TrenCR.Models.Estacion
+@{
+    ViewData["Title"] = "Selecionar Estacion";
+}
+
+<div class="row justify-content-center mx-5">
+    <div class="col-12">
+        <h2 class="text-center">Seleccionar Estación</h2>
+        <p class="text-center">Aquí debera selecionar la estación donde se dirige para que pueda reservar un tiquete</p>
+    </div>
+    @foreach (Estacion item in ViewBag.Estaciones)
+    {
+        <div class="col-6 my-2">
+            <a class="btn btn-outline-primary w-100 h-100 p-5 " asp-controller="Home" asp-route-id="@item.IdEstacion" asp-action="VerHorario">@item.NombreLugar</a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

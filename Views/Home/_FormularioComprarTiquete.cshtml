@@ -1,0 +1,51 @@
+﻿@model TrenCR.Models.Factura
+@{
+    ViewData["Title"] = "Facturación";
+}
+<h2 class="text-center"> Comprar Tiquete</h2>
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-7">
+        <form asp-controller="Home" asp-action="CrearFactura" id="frm_CrearFactura">
+            @foreach (Hora item in ViewBag.Hora)
+            {
+                <input type="hidden" asp-for="IdHora" value="@item.IdHora" />
+            }
+            <div class="form-group">
+                <label asp-for="Hora" class="control-label"></label>
+                <select asp-for="Hora" class="form-control">
+                    @foreach (Hora item in ViewBag.Hora)
+                    {
+                        <option value="@item.Horas">@item.Horas</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombrePersona" class="control-label"></label>
+                <input asp-for="NombrePersona" class="form-control" />
+                <span asp-validation-for="NombrePersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estacion" class="control-label"></label>
+                @foreach (Estacion item in ViewBag.Estacion)
+                {
+                    <input asp-for="Estacion" value="@item.NombreLugar" class="form-control" readonly />
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="Ruta" class="control-label"></label>
+                @foreach (Estacion item in ViewBag.Estacion)
+                {
+                    <input asp-for="Ruta" value="@item.Ruta.OrigenRuta - @item.Ruta.DestinoRuta" class="form-control" readonly />
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="CantidadDeBoletos" class="control-label"></label>
+                <input asp-for="CantidadDeBoletos" class="form-control" />
+                <span asp-validation-for="CantidadDeBoletos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Comprar Tiquete" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

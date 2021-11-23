@@ -1,0 +1,19 @@
+﻿@model TrenCR.Models.Ruta
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row justify-content-center mx-5">
+    <div class="col-12">
+        <h2 class="text-center">Seleccionar una Ruta</h2>
+        <p class="text-center">Aquí debera selecionar la ruta a donde se dirige para que pueda reservar un tiquete</p>
+    </div>
+    @foreach (Ruta item in ViewBag.Rutas)
+    {
+        <div class="col-md-6 my-2">
+            <a class="btn btn-primary w-100 h-100 p-lg-5" asp-route-id="@item.IdRuta" asp-controller="Home" asp-action="SeleccionarEstacion">
+                @item.OrigenRuta- @item.DestinoRuta
+            </a>
+        </div>
+    }
+</div>
